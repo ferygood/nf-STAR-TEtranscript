@@ -7,8 +7,8 @@ params.reads = "/data/scratch/yaochung41/kap1/data/hm/*_R{1,2}.fastq"
 params.outdir = "$baseDir/results"
 
 log.info """\
-         STAR - building Index
-         ============================
+         STAR - Aligning Reads for TE analysis
+         =====================================
          index          : ${params.index}
          reads          : ${params.reads}
          outdir         : ${params.outdir}
