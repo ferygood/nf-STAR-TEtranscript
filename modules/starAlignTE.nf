@@ -41,7 +41,7 @@ process align {
 }
 
 Channel
-    .fromFilePairs( params.reads )
+    .fromPath( params.reads )
     .set { reads_ch }
 
 Channel
