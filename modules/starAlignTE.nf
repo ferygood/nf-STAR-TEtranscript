@@ -21,18 +21,18 @@ process align {
     publishDir params.outdir, mode: 'copy'
 
     input:
-        tuple val(sample_id), path(reads) from reads_ch
+        path reads
         path index
 
     output:
-        tuple val(sample_id), path("${sample_id}")
+        '*.bam'
     
     script:
     """
     STAR  --genomeDir $index \
           --runMode alignReads \
-          --readFilesIn ${reads[0]} ${reads[1]} \
-          --outFileNamePrefix $sameple_id \
+          --readFilesIn $reads \
+          --outFileNamePrefix $reads.baseName \
           --runThreadN 16 \
           --outSAMtype BAM SortedByCoordinate \
           --outFilterMultimapNmax 100 \
