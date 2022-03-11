@@ -8,11 +8,11 @@ process STARALIGN {
   publishDir params.outdir, mode: 'copy'
 
   input:
-    tuple val(sample_id), path(reads)
+    tuple val(sample_id), file(reads)
     path index
 
   output:
-    path 'sample_id*'
+    file 'sample_id*'
 
   script:
     """
