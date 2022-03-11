@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 process STARALIGN {
 
   tag "STAR align on $sample_id"
-  publishDir params.outdir
+  publishDir params.outdir, mode: 'copy'
 
   input:
     tuple val(sample_id), path(reads)

@@ -6,8 +6,8 @@ nextflow.enable.dsl=2
  * Default pipeline parameters
  */
 
-params.reads = '/home/yaochung41/github/nf-STAR-TEtranscript/data/*_R{1,2}.fastq' 
-params.index = '/home/yaochung41/starIndex/hg19'
+params.reads = '/data/scratch/yaochung41/kap1/data/hm/*_R{1,2}.fastq' 
+params.index = '/data/scratch/yaochung41/genomeIndex/hg19'
 params.outdir = './results'
 
 log.info """\
