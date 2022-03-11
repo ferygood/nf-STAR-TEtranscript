@@ -21,8 +21,8 @@ process align {
     publishDir params.outdir, mode: 'copy'
 
     input:
-        path reads
-        path index
+        path(reads)
+        path(index)
 
     output:
         '*.bam'
