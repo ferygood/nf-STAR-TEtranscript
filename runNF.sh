@@ -13,4 +13,4 @@
 date
 hostname
 
-nextflow run nf-STAR.nf
+nextflow run nf-STARindex.nf
