@@ -12,7 +12,7 @@ process STARALIGN {
     path index
 
   output:
-    path sample_id
+    path 'sample_id*'
 
   script:
     """
