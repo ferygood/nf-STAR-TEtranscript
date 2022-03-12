@@ -37,7 +37,6 @@ process TEcount {
     file bam
     file gtf
     file rmsk_ind
-    tuple
 
   output:
     file '*.cntTable'
