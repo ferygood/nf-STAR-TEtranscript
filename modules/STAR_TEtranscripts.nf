@@ -39,7 +39,7 @@ process TEcount {
     file rmsk_ind
 
   output:
-    file 'sample_id.cntTable'
+    file '*.cntTable'
 
   script:
     """
@@ -47,7 +47,7 @@ process TEcount {
             --GTF $gtf \
             --TE $rmsk_ind \
             --sortByPos \
-            --project $params.quantdir
+            --project $sample_id
     """
     
 }
