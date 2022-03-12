@@ -30,11 +30,11 @@ process STARALIGN {
 
 process TEcount {
 
-  tag "TEcount quantified on $bam"
+  tag "TEcount quantified on $bam_id"
   publishDir "$params.quantdir", mode: 'copy'
 
   input:
-    file bam
+    tuple val(bam_id), file(bam_file)
     file gtf
     file rmsk_ind
 
@@ -43,11 +43,11 @@ process TEcount {
 
   script:
     """
-    TEcount -b $bam \
+    TEcount -b $bam_file \
             --GTF $gtf \
             --TE $rmsk_ind \
             --sortByPos \
-            --project $bam
+            --project $bam_id
     """
     
 }
