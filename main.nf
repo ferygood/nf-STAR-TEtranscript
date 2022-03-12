@@ -24,5 +24,5 @@ include { STARALIGN } from './modules/test.nf'
 workflow {
     read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
     index_ch = channel.fromPath( params.index )
-    STARALIGN( read_pairs_ch, index_ch )
+    STARALIGN( read_pairs_ch, index_ch.toList() )
 }
