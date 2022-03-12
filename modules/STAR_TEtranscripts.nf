@@ -30,13 +30,14 @@ process STARALIGN {
 
 process TEcount {
 
-  tag "TEcount quantified on $sample_id"
+  tag "TEcount quantified on $bam"
   publishDir "$params.quantdir", mode: 'copy'
 
   input:
     file bam
     file gtf
     file rmsk_ind
+    tuple
 
   output:
     file '*.cntTable'
@@ -47,7 +48,7 @@ process TEcount {
             --GTF $gtf \
             --TE $rmsk_ind \
             --sortByPos \
-            --project $sample_id
+            --project $bam
     """
     
 }

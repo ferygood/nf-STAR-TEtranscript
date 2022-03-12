@@ -30,9 +30,9 @@ include { STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 workflow {
     read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
     index_ch = channel.fromPath( params.index )
+    STARALIGN( read_pairs_ch, index_ch.toList() )
     gtf_ch = channel.fromPath( params.gtf )
     rmsk_ind_ch = channel.fromPath( params.rmsk_ind )
-    STARALIGN( read_pairs_ch, index_ch.toList() )
     TEcount( STARALIGN.out, gtf_ch.toList(), rmsk_ind_ch.toList() )
 }
 
