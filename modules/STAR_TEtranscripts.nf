@@ -12,7 +12,7 @@ process STARALIGN {
     path index
 
   output:
-    file('*.bam')
+    file '*.bam'
 
   script:
     """
@@ -27,3 +27,27 @@ process STARALIGN {
     """
 }
 
+
+process TEcount {
+
+  tag "TEcount quantified on $sample_id"
+  publishDir "$params.quantdir", mode: 'copy'
+
+  input:
+    file bam
+    file gtf
+    file rmsk_ind
+
+  output:
+    file 'sample_id.cntTable'
+
+  script:
+    """
+    TEcount -b $bam \
+            --GTF $gtf \
+            --TE $rmsk_ind \
+            --sortByPos \
+            --project $params.quantdir
+    """
+    
+}
