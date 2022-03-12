@@ -25,7 +25,7 @@ quantdir : ${params.quantdir}
 """
 
 //import modules
-include { STARALIGN; TEcount } from './modules/STAR_TEtranscript.nf'
+include { STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 
 workflow {
     read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
