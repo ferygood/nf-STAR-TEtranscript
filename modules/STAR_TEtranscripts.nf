@@ -12,7 +12,7 @@ process STARALIGN {
     path index
 
   output:
-    file '*.bam'
+    tuple val(sample_id), file('*.bam')
 
   script:
     """
