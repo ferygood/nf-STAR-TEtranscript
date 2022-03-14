@@ -4,7 +4,7 @@ nextflow.enable.dsl=2
 
 process STARINDEX {
 
-  publishDir $params.indexDirPrefix, mode: 'copy'
+  publishDir "$params.indexDirPrefix", mode: 'copy'
 
   input:
     path indexDirPrefix
