@@ -4,8 +4,6 @@ nextflow.enable.dsl=2
 
 process STARINDEX {
 
-  publishDir "$params.index", mode: 'copy' 
-
   input:
     path index
     file fasta
