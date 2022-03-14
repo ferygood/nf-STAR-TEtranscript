@@ -16,6 +16,7 @@ params.quantdir = "./quantResults"
 log.info """\
 STAR - TEtranscripts
 =============================
+fasta    : ${params.fasta}
 index    : ${params.index}
 reads    : ${params.reads}
 outdir   : ${params.outdir}
@@ -28,10 +29,12 @@ quantdir : ${params.quantdir}
 include { STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 
 workflow {
+    fasta_ch = channel.fromPath( params.fasta )
     read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
     index_ch = channel.fromPath( params.index )
-    STARALIGN( read_pairs_ch, index_ch.toList() )
     gtf_ch = channel.fromPath( params.gtf )
+    STARINDEX( index_ch, fasta_ch, gtf_ch)
+    STARALIGN( read_pairs_ch, index_ch.toList() )
     rmsk_ind_ch = channel.fromPath( params.rmsk_ind )
     TEcount( STARALIGN.out, gtf_ch.toList(), rmsk_ind_ch.toList() )
 }

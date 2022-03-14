@@ -2,6 +2,28 @@
 
 nextflow.enable.dsl=2
 
+process STARINDEX {
+
+  publishDir "$params.index", mode: 'copy' 
+
+  input:
+    path index
+    file fasta
+    file gtf
+
+  output:
+    file '*'
+
+  script:
+    """
+    STAR  --runMode genomeGenerate \
+          --genomeDir $index \
+          --genomeFastaFiles $fasta
+          --sjdbGTFfile $gtf
+    """
+
+}
+
 process STARALIGN {
 
   tag "STAR align on $sample_id"
