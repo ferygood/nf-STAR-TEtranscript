@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 /*
  * Default pipeline parameters
  */
-
+params.fasta = '/data/scratch/yaochung41/reference/hg19.fa'
 params.reads = '/data/scratch/yaochung41/kap1/data/hm/*_R{1,2}.fastq' 
 params.index = '/data/scratch/yaochung41/genomeIndex/hg19'
 params.outdir = './results'
