@@ -26,7 +26,7 @@ quantdir : ${params.quantdir}
 """
 
 //import modules
-include { STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
+include { STARINDEX; STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 
 workflow {
     fasta_ch = channel.fromPath( params.fasta )
