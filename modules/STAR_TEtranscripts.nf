@@ -10,12 +10,14 @@ process STARINDEX {
     path indexDirPrefix
     file fasta
     file gtf
-  
+
   output:
-    stdout
+    file '*'
 
   script:
     """
+    mkdir $indexDirPrefix
+    
     STAR  --runThreadN 20 \
           --runMode genomeGenerate \
           --genomeDir $indexDirPrefix \
