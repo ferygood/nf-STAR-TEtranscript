@@ -16,6 +16,7 @@ process STARINDEX {
 
   script:
     """
+    mkdir $index
     STAR  --runMode genomeGenerate \
           --genomeDir $index \
           --genomeFastaFiles $fasta
