@@ -11,16 +11,14 @@ process STARINDEX {
     file fasta
     file gtf
 
-  output:
-    file '*'
-
   script:
     """
-    mkdir $index
-    STAR  --runMode genomeGenerate \
+    STAR  --runThreadN 20 \
+          --runMode genomeGenerate \
           --genomeDir $index \
           --genomeFastaFiles $fasta
-          --sjdbGTFfile $gtf
+          --sjdbGTFfile $gtf \
+          --sjdbOverhang 100
     """
 
 }
