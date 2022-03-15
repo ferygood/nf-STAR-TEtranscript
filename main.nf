@@ -31,16 +31,16 @@ quantdir         : ${params.quantdir}
 include { STARINDEX; STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 
 workflow {
-    take:
-        indexDir_ch = channel.fromPath( params.indexDir )
-        indexPrefix_ch = channel.of( params.indexPrefix )
-        fasta_ch = channel.fromPath( params.fasta )
-        gtf_ch = channel.fromPath( params.gtf )
-        read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
-        rmsk_ind_ch = channel.fromPath( params.rmsk_ind )
-    main:
-        STARINDEX( indexDir_ch, params.indexPrefix, fasta_ch, gtf_ch)
-        STARALIGN( read_pairs_ch, indexDir_ch.toList() )
-        TEcount( STARALIGN.out, gtf_ch.toList(), rmsk_ind_ch.toList() )
+    
+    indexDir_ch = channel.fromPath( params.indexDir )
+    indexPrefix_ch = channel.of( params.indexPrefix )
+    fasta_ch = channel.fromPath( params.fasta )
+    gtf_ch = channel.fromPath( params.gtf )
+    read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
+    rmsk_ind_ch = channel.fromPath( params.rmsk_ind )
+    
+    STARINDEX( indexDir_ch, params.indexPrefix, fasta_ch, gtf_ch)
+    STARALIGN( read_pairs_ch, indexDir_ch.toList() )
+    TEcount( STARALIGN.out, gtf_ch.toList(), rmsk_ind_ch.toList() )
 }
 
