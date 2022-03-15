@@ -30,22 +30,14 @@ quantdir         : ${params.quantdir}
 //import modules
 include { STARINDEX; STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 
-//declare channel
-indexDir_ch = channel.fromPath( params.indexDir )
-indexPrefix_ch = channel.of( params.indexPrefix )
-fasta_ch = channel.fromPath( params.fasta )
-gtf_ch = channel.fromPath( params.gtf )
-read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
-rmsk_ind_ch = channel.fromPath( params.rmsk_ind )
-
 workflow {
     take:
-        indexDir_ch
-        indexPrefix_ch
-        fasta_ch
-        gtf_ch
-        read_pairs_ch
-        rmsk_ind_ch
+        indexDir_ch = channel.fromPath( params.indexDir )
+        indexPrefix_ch = channel.of( params.indexPrefix )
+        fasta_ch = channel.fromPath( params.fasta )
+        gtf_ch = channel.fromPath( params.gtf )
+        read_pairs_ch = channel.fromFilePairs( params.reads, checkIfExists: true )
+        rmsk_ind_ch = channel.fromPath( params.rmsk_ind )
     main:
         STARINDEX( indexDir_ch, params.indexPrefix, fasta_ch, gtf_ch)
         STARALIGN( read_pairs_ch, indexDir_ch.toList() )
