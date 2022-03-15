@@ -4,10 +4,11 @@ nextflow.enable.dsl=2
 
 process STARINDEX {
 
-  publishDir "$params.indexDirPrefix", mode: 'copy'
+  publishDir "$params.indexDir", mode: 'copy'
 
   input:
-    path indexDirPrefix
+    path indexDir
+    val indexPrefix
     file fasta
     file gtf
 
@@ -16,11 +17,9 @@ process STARINDEX {
 
   script:
     """
-    mkdir $indexDirPrefix
-    
     STAR  --runThreadN 20 \
           --runMode genomeGenerate \
-          --genomeDir $indexDirPrefix \
+          --genomeDir $indexPrefix \
           --genomeFastaFiles $fasta
           --sjdbGTFfile $gtf \
           --sjdbOverhang 100
