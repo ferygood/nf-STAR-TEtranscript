@@ -20,7 +20,7 @@ STAR - TEtranscripts
 fasta            : ${params.fasta}
 reads            : ${params.reads}
 indexPrefix      : ${params.indexPrefix}
-indexDir         : ${params.inndexDir}
+indexDir         : ${params.indexDir}
 outdir           : ${params.outdir}
 gtf              : ${params.gtf}
 rmsk_ind         : ${params.rmsk_ind}
