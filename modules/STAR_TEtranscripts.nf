@@ -2,28 +2,6 @@
 
 nextflow.enable.dsl=2
 
-process STARINDEX {
-
-  file(params.indexDir).mkdir()
-  publishDir "${params.indexDir}", mode: 'copy'
-
-  input:
-    path indexDir
-    file fasta
-    file gtf
-
-  script:
-    """
-    STAR  --runThreadN 20 \
-          --runMode genomeGenerate \
-          --genomeDir $indexDir \
-          --genomeFastaFiles $fasta \
-          --sjdbGTFfile $gtf \
-          --sjdbOverhang 100
-    """
-
-}
-
 process STARALIGN {
 
   tag "STAR align on $sample_id"
