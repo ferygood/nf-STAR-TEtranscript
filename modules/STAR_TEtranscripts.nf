@@ -20,7 +20,7 @@ process STARINDEX {
     STAR  --runThreadN 20 \
           --runMode genomeGenerate \
           --genomeDir $indexDir \
-          --genomeFastaFiles $fasta
+          --genomeFastaFiles $fasta \
           --sjdbGTFfile $gtf \
           --sjdbOverhang 100
     """
