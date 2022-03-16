@@ -4,6 +4,7 @@ nextflow.enable.dsl=2
 
 process STARINDEX {
 
+  file(params.indexDir).mkdir()
   publishDir "${params.indexDir}", mode: 'copy'
 
   input:
