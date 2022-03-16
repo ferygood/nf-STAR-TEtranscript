@@ -12,9 +12,6 @@ process STARINDEX {
     file fasta
     file gtf
 
-  output:
-    file '*'
-
   script:
     """
     STAR  --runThreadN 20 \
