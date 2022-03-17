@@ -24,7 +24,7 @@ quantdir         : ${params.quantdir}
 """
 
 //import modules
-include { STARINDEX; STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
+include { STARALIGN; TEcount } from './modules/STAR_TEtranscripts.nf'
 
 workflow buildStarIndex {
     STARINDEX(indexDir_ch, fasta_ch, gtf_ch)
